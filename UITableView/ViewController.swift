@@ -9,10 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+    @IBOutlet weak var myTable: UITableView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        myTable.delegate = self
+        myTable.dataSource = self
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
         cell.textLabel?.text = "Index"
@@ -25,20 +30,5 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Section " + String(section)
     }
-//    func  tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-//        <#code#>
-//    }
-
-
-    @IBOutlet weak var myTable: UITableView!
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        myTable.delegate = self
-        myTable.dataSource = self
-    }
-
-
 }
 
